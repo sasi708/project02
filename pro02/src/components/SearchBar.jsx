@@ -3,7 +3,7 @@ import { Search, Filter } from 'lucide-react';
 
 const SearchBar = ({ searchQuery, onSearchChange, showFilters, onToggleFilters }) => {
   return (
-    <div className="bg-white border-b sticky top-16 z-40">
+    <div className="bg-black border-b sticky top-16 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="flex flex-col sm:flex-row gap-4">
           {/* Search Input */}

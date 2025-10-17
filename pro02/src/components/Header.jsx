@@ -1,54 +1,57 @@
-import React from 'react';
-import { ShoppingCart, User, LogOut } from 'lucide-react';
+import React from "react";
+import { ShoppingCart, User, LogOut } from "lucide-react";
 
-const Header = ({ cartCount, user, onLogout }) => {
+const Header = ({ cartCount, user, onLogout, onHomeClick }) => {
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo Section */}
-          <div className="flex items-center gap-3">
-            <div className="text-3xl">🍽️</div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
-              FoodHub
-            </h1>
+    <header className="bg-yellow-500 shadow-md sticky top-0 z-50 border-b border-yellow-400">
+      <div className="flex items-center justify-between px-6 py-4 text-black">
+
+        {/* Clickable Brand Logo */}
+        <h1
+          onClick={onHomeClick}
+          className="text-4xl font-extrabold tracking-wide animate-logo-glow cursor-pointer hover:scale-105 transition-transform"
+        >
+          <span className="font-[cursive] text-white">Cafe </span>
+          <span className="font-[cursive] bg-gray-800 bg-clip-text text-transparent font-extrabold drop-shadow-[0_0_6px_rgba(255,215,0,0.4)]">
+            SaKZuu
+          </span>
+        </h1>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-5 text-black">
+          <button className="relative p-2 hover:bg-yellow-500/30 rounded-full transition duration-300">
+            <ShoppingCart className="w-6 h-6" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 bg-yellow-500 text-black text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
+                {cartCount}
+              </span>
+            )}
+          </button>
+
+          <div className="flex items-center gap-2">
+            <User className="w-6 h-6" />
+            {user && <span className="text-sm font-medium">{user.email}</span>}
           </div>
 
-          {/* Right Side Actions */}
-          <div className="flex items-center gap-4">
-            {/* Shopping Cart */}
-            <button className="relative p-2 hover:bg-gray-100 rounded-full transition">
-              <ShoppingCart className="w-6 h-6 text-gray-700" />
-              {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">
-                  {cartCount}
-                </span>
-              )}
-            </button>
-
-            {/* User Profile */}
-            <div className="flex items-center gap-2">
-              <button className="p-2 hover:bg-gray-100 rounded-full transition">
-                <User className="w-6 h-6 text-gray-700" />
-              </button>
-              {user && (
-                <span className="hidden sm:block text-sm font-medium text-gray-700">
-                  {user.name || user.email}
-                </span>
-              )}
-            </div>
-
-            {/* Logout Button */}
-            <button
-              onClick={onLogout}
-              className="flex items-center gap-2 px-4 py-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition font-medium"
-            >
-              <LogOut className="w-4 h-4" />
-              <span className="hidden sm:inline">Logout</span>
-            </button>
-          </div>
+          <button
+            onClick={onLogout}
+            className="flex items-center gap-2 px-4 py-2 bg-black text-yellow-400 hover:bg-gray-900 rounded-lg transition font-semibold shadow-md"
+          >
+            <LogOut className="w-4 h-4" />
+            <span>Logout</span>
+          </button>
         </div>
       </div>
+
+      {/* Animation */}
+      <style jsx>{`
+        @keyframes logoGlow {
+          0% { filter: drop-shadow(0 0 4px rgba(255, 230, 80, 0.3)); }
+          50% { filter: drop-shadow(0 0 8px rgba(255, 230, 100, 0.6)); }
+          100% { filter: drop-shadow(0 0 4px rgba(255, 230, 80, 0.3)); }
+        }
+        .animate-logo-glow { animation: logoGlow 5s ease-in-out infinite; }
+      `}</style>
     </header>
   );
 };

@@ -11,7 +11,7 @@ const categories = [
 
 const Categories = ({ selectedCategory, onSelectCategory }) => {
   return (
-    <div className="bg-white border-b">
+    <div className="bg-yellow-400 border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex gap-2 overflow-x-auto py-4 scrollbar-hide">
           {categories.map((category) => (
@@ -20,7 +20,7 @@ const Categories = ({ selectedCategory, onSelectCategory }) => {
               onClick={() => onSelectCategory(category.name)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium whitespace-nowrap transition-all ${
                 selectedCategory === category.name
-                  ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg scale-105'
+                  ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 text-white shadow-lg scale-105'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105'
               }`}
             >
